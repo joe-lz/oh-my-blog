@@ -1,0 +1,97 @@
+@import "~src/styles/variables.scss";
+
+.banner {
+  &_content {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    margin: 30px auto;
+    padding-top: 150px;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px;
+    // background: linear-gradient(
+    //   315deg,
+    //   rgb(46, 88, 214) 0%,
+    //   rgb(18, 67, 215) 100%
+    // );
+    background-color: $color-disabled;
+    border-radius: 20px;
+    border: 1px solid $color-border;
+    .tsparticles {
+      position: absolute;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.3;
+    }
+    .logobg {
+      position: absolute;
+      z-index: 1;
+      bottom: -280px;
+      right: -200px;
+      opacity: 0.1;
+      height: 130%;
+      filter: brightness(0) invert(1);
+    }
+  }
+  &_body {
+    position: relative;
+    left: 100px;
+    z-index: 4;
+    // width: 300px;
+    // height: 300px;
+    // background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    overflow: hidden;
+    height: min-content;
+    &_content {
+      padding: 30px;
+    }
+    &_title {
+      margin-bottom: 30px;
+      font-size: 40px;
+      color: white;
+    }
+    &_input {
+      padding: 15px 0;
+      width: 300px;
+      input {
+        padding: 0 15px;
+        width: 100%;
+        height: 44px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        background-color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+        font-weight: bold;
+      }
+      button {
+        cursor: pointer;
+        padding: 0;
+        width: 100%;
+        height: 44px;
+        border-radius: 8px;
+        border: none;
+        outline: none;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+    &_btn_primary {
+      background-color: transparent;
+      color: white;
+      font-weight: 400 !important;
+      &:hover {
+        background-color: $color-block;
+      }
+      a {
+        text-decoration: underline;
+        color: white;
+      }
+    }
+  }
+}

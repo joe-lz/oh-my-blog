@@ -1,0 +1,128 @@
+@import "~src/styles/variables.scss";
+
+.articles_item {
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  display: inline-block;
+  width: 290px;
+  height: 230px;
+  background-color: white;
+  box-shadow: $box-shadow;
+  border-radius: 4px;
+  transition: $transition;
+  // &:hover {
+  //   outline: 1px solid rgba(0, 0, 0, 0.1);
+  // }
+  &_poster {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+    background-color: rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    background-position: center;
+    &_placeholder {
+      font-size: 30px;
+      color: $color-disabled;
+    }
+    &:hover {
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      .articles_item_operation {
+        right: 0;
+      }
+      .articles_item_operation2 {
+        right: 0;
+      }
+    }
+  }
+  &_operation {
+    position: absolute;
+    z-index: 3;
+    top: 15px;
+    right: -300px;
+    z-index: 3;
+    transition: $transition;
+    white-space: nowrap;
+    &_btn,
+    &_btn_danger {
+      cursor: pointer;
+      margin-right: 5px;
+      padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      font-size: 12px;
+      background-color: $color-link;
+      border-radius: 15px;
+      color: white;
+      &_danger {
+        background-color: $color-error;
+      }
+    }
+  }
+  &_operation2 {
+    position: absolute;
+    z-index: 3;
+    bottom: 15px;
+    right: -300px;
+    z-index: 3;
+    transition: $transition;
+    white-space: nowrap;
+    &_btn {
+      cursor: pointer;
+      margin-right: 5px;
+      padding: 0 15px;
+      height: 30px;
+      line-height: 30px;
+      display: inline-block;
+      font-size: 12px;
+      background-color: $color-link;
+      border-radius: 15px;
+      color: white;
+    }
+  }
+  &_title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 15px;
+    padding-top: 20px;
+    font-size: 16px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &_bottom {
+    padding: 0 15px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+      color: $color-disabled;
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .articles_item {
+    background-color: $color-block-dark;
+    &_title {
+      color: white;
+    }
+  }
+}

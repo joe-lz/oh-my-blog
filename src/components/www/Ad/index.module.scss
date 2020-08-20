@@ -1,0 +1,14 @@
+@import '~src/styles/variables.scss';
+
+.block {
+  display: block;
+  margin-bottom: 15px;
+  width: 270px;
+  height: 220px;
+  background-color: white;
+  box-shadow: $box-shadow;
+  // border-radius: 2px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

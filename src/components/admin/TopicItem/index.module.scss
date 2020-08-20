@@ -1,0 +1,52 @@
+@import '~src/styles/variables.scss';
+.item {
+  position: relative;
+  display: flex;
+  padding-top: 10px;
+  width: 50%;
+  height: 100px;
+  overflow: hidden;
+  &_img {
+    text-align: center;
+    line-height: 50px;
+    font-size: 12px;
+    
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    border: 1px solid $color-border;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+  }
+  &_right {
+    padding-left: 10px;
+    padding-right: 30px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    &:hover {
+      .btn {
+        display: block;
+      }
+    }
+    .title {
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .desc {
+      font-size: 12px;
+      color: $color-disabled;
+      line-height: 16px;
+    }
+    .btn {
+      display: none;
+      position: absolute;
+      top: 0px;
+      right: 30px;
+      margin-top: 5px;
+      width: 50px;
+    }
+  }
+}

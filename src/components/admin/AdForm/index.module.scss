@@ -1,0 +1,15 @@
+@import '~src/styles/variables.scss';
+
+.form {
+  position: relative;
+  ._admin_body_section_title2 {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 8px 15px;
+    padding-left: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: $color-disabled;
+    color: white;
+  }
+}

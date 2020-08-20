@@ -1,0 +1,1 @@
+{"ast":null,"code":"export default [{\n  value: 1,\n  label: \"未授权\",\n  desc: \"无任何权限\"\n}, {\n  value: 98,\n  label: \"普通用户\",\n  desc: \"仅投稿权限，且稿件需要审核\"\n}, {\n  value: 99,\n  label: \"普通管理员\",\n  desc: \"除了用户管理外全部权限\"\n}, {\n  value: 100,\n  label: \"超级管理员\",\n  desc: '所有权限'\n}];","map":null,"metadata":{},"sourceType":"module"}

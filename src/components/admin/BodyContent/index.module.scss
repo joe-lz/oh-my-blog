@@ -1,0 +1,34 @@
+@import "~src/styles/variables.scss";
+
+.container {
+  padding-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  .notAuthed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 60vh;
+    font-size: 20px;
+    i {
+      margin-bottom: 20px;
+      font-size: 50px;
+      color: $color-disabled;
+    }
+    p {
+      color: $color-disabled;
+      line-height: 30px;
+    }
+  }
+  .content {
+    padding-top: 20px;
+    margin-left: 60px;
+    flex: 1;
+    // background-color: blue;
+  }
+}

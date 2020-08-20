@@ -1,0 +1,96 @@
+@import "~src/styles/variables.scss";
+
+.header {
+  width: 100vw;
+  height: 80px;
+  background-color: white;
+  border-bottom: 1px solid $color-border;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+  }
+  .logo {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 100%;
+  }
+  .logoimg {
+    height: 100%;
+    cursor: pointer;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 300px;
+    height: 100%;
+    font-size: 15px;
+    a {
+      text-decoration: none;
+    }
+    .divider {
+      margin: 0 3px;
+      color: $color-font;
+    }
+    .login {
+    }
+    .priority {
+      margin-right: 5px;
+      color: $color-disabled;
+    }
+    .link,
+    .link_active {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      cursor: pointer;
+      color: $color-font;
+      .btn {
+        padding: 0 10px;
+        height: 35px;
+        line-height: 35px;
+        border-radius: 6px;
+        display: inline-block;
+        transition: $transition;
+        &:hover {
+          background-color: $color-btnbg;
+        }
+        i {
+          margin-right: 5px;
+          font-size: 16px;
+        }
+      }
+    }
+    .link_active {
+      i {
+        color: $color-link !important;
+      }
+      span {
+        color: $color-link !important;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .header {
+    background-color: RGBA(50, 37, 45, 1.00);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    .btn {
+      color: white !important;
+      &:hover {
+        background-color: $color-btnbg-dark !important;
+      }
+      i {
+        color: white !important;
+      }
+    }
+  }
+}

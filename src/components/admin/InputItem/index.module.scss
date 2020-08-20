@@ -1,0 +1,46 @@
+@import '~src/styles/variables.scss';
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  border-bottom: 1px solid $color-border;
+  &:last-child {
+    border-bottom: none;
+  }
+  &_title {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  &_right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    padding-left: 30px;
+    height: 100%;
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-link;
+    }
+    &_logo {
+      margin-right: 5px;
+      width: 100px;
+      height: 50px;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    input {
+      width: 100%;
+      text-align: right;
+      height: 100%;
+      border: none;
+      outline: none;
+      font-size: 16px;
+    }
+  }
+}
