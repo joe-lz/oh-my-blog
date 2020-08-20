@@ -62,7 +62,7 @@ function Components(props) {
       <Head>
         {profile && (
           <title>
-            {profile.title || "鲸典设计"}
+            {profile.title || "oh my blog"}
             {curMenu ? `-${curMenu.title}` : ""}
             {router.pathname.includes("www/home") ? "-首页" : ""}
             {router.pathname.includes("www/posts")

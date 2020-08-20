@@ -4,8 +4,10 @@ export const createProfile = (params = {}) => {
   return new Promise((resolve, reject) => {
     // 创建默认菜单
     const profileObject = new AV.Object('CMS_Profile')
-    profileObject.set('logo', 'https://qiniu.jingdian.club/FpFCrbbNmg-GmFfVLdsxmmbPZFHw')
-    profileObject.set('title', '')
+    profileObject.set('logo', 'https://static.ccrgt.com/images/42bc258e-d183-49d5-aea4-6eb5914647e3.png')
+    profileObject.set('title', 'oh my blog')
+    profileObject.set('github', 'https://github.com/joe-lz/oh-my-blog')
+    profileObject.set('copyright', 'Copyright © 1998 - 2020 oh my blog. All Rights Reserved')
     profileObject.set('allowAComment', true)
     profileObject.set('allowBComment', true)
     profileObject.set('showBlog', true)
