@@ -16,12 +16,21 @@
       width: 100%;
       max-width: 1200px;
       .logo {
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         height: 30px;
+        // width: 100%;
+        // background-position: center;
+        // background-size: contain;
+        // background-repeat: no-repeat;
+        img {
+          height: 100%;
+        }
       }
-      .copyright {
-        color: $color-disabled;
+      .item, .copyright {
         font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        color: $color-disabled;
       }
     }
   }

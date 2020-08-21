@@ -42,9 +42,9 @@ function Components(props) {
               <div className={styles.info}>
                 <p className={styles.title}>{props.data.title}</p>
                 <div className={styles.actions}>
-                  <div
-                    className={styles.actions_item}
-                  >{`${props.data.category_2_title}`}</div>
+                  <div className={styles.actions_item}>{`${
+                    props.data.category_2_title || props.data.category_1_title
+                  }`}</div>
                   <div className={styles.actions_item}>{`・${time}`}</div>
                   <div className={styles.actions_item}>
                     {props.data.views ? `・阅读 ${props.data.views}` : ""}

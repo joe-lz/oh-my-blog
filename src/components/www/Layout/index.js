@@ -70,6 +70,31 @@ function Components(props) {
       {profile && (
         <footer className={styles.footer}>
           <div className={styles.footer_content}>
+            <div
+              className={styles.logo}
+              // style={{ backgroundImage: `url(${profile.logo})` }}
+            >
+              <img src={profile.logo} alt="" className="logo" />
+            </div>
+            {profile.github && (
+              <div className={styles.item}>
+                github：
+                <a href={profile.github} className="link" target="_blank">
+                  {profile.github}
+                </a>
+              </div>
+            )}
+            {profile.email && (
+              <div className={styles.item}>
+                邮箱：
+                <a href={`mailto:${profile.email}`} className="link">
+                  {profile.email}
+                </a>
+              </div>
+            )}
+            {profile.copyright && (
+              <div className={styles.copyright}>{profile.copyright}</div>
+            )}
           </div>
         </footer>
       )}
