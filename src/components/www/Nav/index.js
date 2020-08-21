@@ -4,7 +4,7 @@ import AV from "leancloud-storage";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { Menu, Dropdown } from "antd";
+import { Menu, Dropdown, message } from "antd";
 
 import styles from "./index.module.scss";
 import Login from "../Login";
@@ -25,10 +25,7 @@ function Components(props) {
       {userinfo && (
         <Menu>
           <Menu.Item>
-            <Link href={`/www/user/${userinfo.objectId}`}>我的首页</Link>
-          </Menu.Item>
-          <Menu.Item>
-            <Link href="/www/center">创作中心</Link>
+            <Link href="/admin/home">创作中心</Link>
           </Menu.Item>
           <Menu.Item
             danger
@@ -58,132 +55,109 @@ function Components(props) {
   }, [router]);
 
   return (
-    <div>
-      <Head>
-        {profile && (
-          <title>
-            {profile.title || "oh my blog"}
-            {curMenu ? `-${curMenu.title}` : ""}
-            {router.pathname.includes("www/home") ? "-首页" : ""}
-            {router.pathname.includes("www/posts")
-              ? `-${profile.blogName}`
-              : ""}
-          </title>
-        )}
-      </Head>
-      {/* 一级目录 */}
-      <div className={styles.nav1}>
-        <div className={styles.nav}>
-          <div
-            className={styles.nav_logo}
-            style={{ backgroundImage: `url(${profile.logo})` }}
-          ></div>
-          <div className={styles.nav_link}>
-            <Link href="/www/home">
-              <div
-                className={
-                  router.pathname.includes("www/home")
-                    ? styles.nav_link_item_active
-                    : styles.nav_link_item
-                }
-              >
-                首页
-              </div>
-            </Link>
-            {menus.map((obj) => {
-              let toLink = `/www/alist?cate1=${obj.key}`;
-              // if (obj.children && obj.children.length > 0) {
-              //   toLink = `/www/alist?cate1=${obj.key}&cate2=${obj.children[0].key}`
-              // }
-              return (
-                <Link href={toLink} key={obj.key}>
-                  <div
-                    className={
-                      router.query.cate1 === obj.key
-                        ? styles.nav_link_item_active
-                        : styles.nav_link_item
-                    }
-                    key={obj.key}
-                  >
-                    {obj.title}
-                  </div>
-                </Link>
-              );
-            })}
-            {profile.showBlog && (
-              <Link href="/www/posts">
+    <>
+      {profile && (
+        <>
+          <div>
+            <Head>
+              <title>
+                {profile.title}
+                {curMenu ? `-${curMenu.title}` : ""}
+                {router.pathname.includes("www/home") ? "-首页" : ""}
+                {router.pathname.includes("www/posts")
+                  ? `-${profile.blogName}`
+                  : ""}
+              </title>
+            </Head>
+            <div className={styles.nav1}>
+              <div className={styles.nav}>
                 <div
-                  className={
-                    router.pathname.includes("www/posts")
-                      ? styles.nav_link_item_active
-                      : styles.nav_link_item
-                  }
-                >
-                  {profile.blogName}
-                </div>
-              </Link>
-            )}
-          </div>
-          {curUser ? (
-            <Dropdown overlay={menu} arrow placement="bottomRight">
-              <div
-                className={styles.link_login}
-                onClick={(e) => e.preventDefault()}
-              >
-                <div className={styles.btn}>
-                  <span>{curUser.attributes.username}</span>
-                  <i
-                    className="iconfont icon-down"
-                    style={{ fontSize: 12 }}
-                  ></i>
-                </div>
-              </div>
-            </Dropdown>
-          ) : (
-            <Login>
-              <p className={styles.nav_login}>登录/注册</p>
-            </Login>
-          )}
-        </div>
-      </div>
-      {/* 二级目录 */}
-      {curMenu && curMenu.children && (
-        <div className={styles.nav2}>
-          <div className={styles.nav_link}>
-            <Link href={`/www/alist?cate1=${curMenu.key}`}>
-              <div
-                className={
-                  !router.query.cate2
-                    ? styles.nav_link_item_active
-                    : styles.nav_link_item
-                }
-              >
-                全部
-              </div>
-            </Link>
-            {curMenu.children.map((obj) => {
-              return (
-                <Link
-                  href={`/www/alist?cate1=${curMenu.key}&cate2=${obj.key}`}
-                  key={obj.key}
-                >
+                  className={styles.nav_logo}
+                  style={{ backgroundImage: `url(${profile.logo})` }}
+                ></div>
+                <div className={styles.nav_link}>
+                  <Link href="/www/home">
+                    <div
+                      className={
+                        router.pathname.includes("www/home")
+                          ? styles.nav_link_item_active
+                          : styles.nav_link_item
+                      }
+                    >
+                      <i className="iconfont icon-fankuitianxie"></i>
+                      文章
+                    </div>
+                  </Link>
+                  {/* {profile.showBlog && (
+                    <Link href="/www/posts">
+                      <div
+                        className={
+                          router.pathname.includes("www/posts")
+                            ? styles.nav_link_item_active
+                            : styles.nav_link_item
+                        }
+                      >
+                        <i className="iconfont icon-message_three_points"></i>
+                        {profile.blogName}
+                      </div>
+                    </Link>
+                  )} */}
                   <div
-                    className={
-                      router.query.cate2 === obj.key
-                        ? styles.nav_link_item_active
-                        : styles.nav_link_item
-                    }
-                    key={obj.key}
+                    className={styles.nav_link_item}
+                    onClick={() => {
+                      message.info("开发中，即将开放");
+                    }}
                   >
-                    {obj.title}
+                    <i className="iconfont icon-message_three_points"></i>
+                    留言区
                   </div>
-                </Link>
-              );
-            })}
+                  {/* <Link href="/www/about">
+                    <div
+                      className={
+                        router.pathname.includes("www/about")
+                          ? styles.nav_link_item_active
+                          : styles.nav_link_item
+                      }
+                    >
+                      <i className="iconfont icon-profile"></i>
+                      关于我
+                    </div>
+                  </Link> */}
+                  {profile.github && (
+                    <a href={profile.github} target="_blank">
+                      <div className={styles.nav_link_item}>
+                        <i className="iconfont icon-github"></i>
+                        Github
+                      </div>
+                    </a>
+                  )}
+                  {curUser ? (
+                    <Dropdown overlay={menu} arrow placement="bottomRight">
+                      <div
+                        className={styles.link_login}
+                        onClick={(e) => e.preventDefault()}
+                      >
+                        <div className={styles.btn}>
+                          <span>{curUser.attributes.username}</span>
+                          <i
+                            className="iconfont icon-down"
+                            style={{ fontSize: 12 }}
+                          ></i>
+                        </div>
+                      </div>
+                    </Dropdown>
+                  ) : (
+                    <Login>
+                      <p className={styles.nav_login}>登录/注册</p>
+                    </Login>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </>
       )}
-    </div>
+    </>
   );
 }
 

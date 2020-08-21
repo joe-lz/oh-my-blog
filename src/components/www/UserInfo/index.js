@@ -1,25 +1,25 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import AV from 'leancloud-storage'
-import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
-import { Button, message } from 'antd'
+import Head from "next/head";
+import Link from "next/link";
+import AV from "leancloud-storage";
+import dayjs from "dayjs";
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
+import { Button, message } from "antd";
 
-import styles from './index.module.scss'
-import { userFollow, userUnFollow, userFolloweeList } from 'src/service/user'
+import styles from "./index.module.scss";
+import { userFollow, userUnFollow, userFolloweeList } from "src/service/user";
 
 Components.defaultProps = {
   followeeList: [],
   userinfo: null,
   time: null,
   views: 0,
-}
+};
 
 function Components(props) {
-  const userinfoNew = JSON.parse(JSON.stringify(props.userinfo))
+  const userinfoNew = JSON.parse(JSON.stringify(props.userinfo));
   // const [followeeList, setfolloweeList] = useState([])
-  const [isFollowing, setisFollowing] = useState(false)
+  const [isFollowing, setisFollowing] = useState(false);
 
   // const handleFetchFollowee = async () => {
   //   const list = await userFolloweeList()
@@ -43,71 +43,40 @@ function Components(props) {
     //   }
     // }
     // fetchData()
-  }, [])
+  }, []);
 
   useEffect(() => {
     props.followeeList.map((obj) => {
       if (obj.objectId === userinfoNew.user.objectId) {
-        setisFollowing(true)
+        setisFollowing(true);
       }
-    })
-  }, [props.followeeList])
+    });
+  }, [props.followeeList]);
 
   return (
     <>
       {props.userinfo && (
         <div className={styles.userinfo}>
-          <a href={`/www/user/${userinfoNew.objectId}`} target="_blank" style={{ display: 'block' }}>
-            <div className={styles.userinfo_content}>
-              <div className={styles.avatar} style={{ backgroundImage: `url(${userinfoNew.avatar})` }}></div>
-              <div className={styles.userinfo_info}>
-                <p className={styles.nickname}>{userinfoNew.nickname}</p>
-                <p className={styles.about}>
-                  {userinfoNew.position}
-                  {userinfoNew.co_name ? `@${userinfoNew.co_name}` : ''}
-                  {userinfoNew.position || userinfoNew.co_name ? '・' : ''}
-                  {props.time ? `${props.time}` : ''}
-                  {props.views ? `・阅读 ${props.views}` : ''}
-                </p>
-              </div>
+          <div className={styles.userinfo_content}>
+            <div
+              className={styles.avatar}
+              style={{ backgroundImage: `url(${userinfoNew.avatar})` }}
+            ></div>
+            <div className={styles.userinfo_info}>
+              <p className={styles.nickname}>{userinfoNew.nickname}</p>
+              <p className={styles.about}>
+                {userinfoNew.position}
+                {userinfoNew.co_name ? `@${userinfoNew.co_name}` : ""}
+                {userinfoNew.position || userinfoNew.co_name ? "・" : ""}
+                {props.time ? `${props.time}` : ""}
+                {props.views ? `・阅读 ${props.views}` : ""}
+              </p>
             </div>
-          </a>
-          <div className={styles.userinfo_follow}>
-            {!isFollowing && (
-              <Button
-                // type='primary'
-                size="small"
-                // disabled={isFollowing}
-                onClick={async () => {
-                  if (isFollowing) {
-                    userUnFollow({ userid: userinfoNew.user.objectId })
-                      .then(() => {
-                        message.success('取消关注成功')
-                        setisFollowing(false)
-                      })
-                      .catch((err) => {
-                        message.error(err)
-                      })
-                  } else {
-                    userFollow({ userid: userinfoNew.user.objectId })
-                      .then(() => {
-                        message.success('关注成功')
-                        setisFollowing(true)
-                      })
-                      .catch((err) => {
-                        message.error(err)
-                      })
-                  }
-                }}
-              >
-                {isFollowing ? '已关注' : '关注'}
-              </Button>
-            )}
           </div>
         </div>
       )}
     </>
-  )
+  );
 }
 
-export default Components
+export default Components;
