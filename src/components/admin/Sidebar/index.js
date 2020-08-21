@@ -45,7 +45,7 @@ function Components(props) {
             <Item2 path="/admin/feature/articles" title="我的文章" />
             <Item2 path="/admin/feature/assets" title="素材管理" />
           </div>
-          <div className={styles.sidebar_item}>
+          {/* <div className={styles.sidebar_item}>
             <div
               className={
                 !router.pathname.includes("/admin/user")
@@ -58,7 +58,7 @@ function Components(props) {
             <div className={styles.sidebar_item_placeholder}></div>
             <Item2 path="/admin/user/account" title="个人资料" />
             <Item2 path="/admin/user/message" title="消息管理" />
-          </div>
+          </div> */}
           <div className={styles.sidebar_item}>
             <div
               className={
@@ -75,7 +75,7 @@ function Components(props) {
             <Item2 path="/admin/manage/setting" title="基本设置" />
             <Item2 path="/admin/manage/ad" title="广告设置" />
           </div>
-          <div className={styles.sidebar_item}>
+          {/* <div className={styles.sidebar_item}>
             <div
               className={
                 !router.pathname.includes("/admin/blog")
@@ -89,7 +89,7 @@ function Components(props) {
             <div className={styles.sidebar_item_placeholder}></div>
             <Item2 path="/admin/blog/topics" title="话题设置" />
             <Item2 path="/admin/blog/manage" title="动态管理" />
-          </div>
+          </div> */}
         </>
       )}
     </div>
