@@ -11,7 +11,7 @@ function Components(props) {
   return (
     <div className={styles.nodata}>
       <InboxOutlined />
-      <p className="desc">暂无数据</p>
+      <p className="desc">{props.type === 'notReady' ? '功能开发中，即将开放' : '暂无数据'}</p>
     </div>
   )
 }

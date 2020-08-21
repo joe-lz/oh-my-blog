@@ -96,14 +96,14 @@ function Components(props) {
           </BodyContent>
         )}
       </div>
-      {profile && (
+      {/* {profile && (
         <footer>
           <div className={styles.footer_content}>
             <img src={profile.toJSON().logo} alt="" className={styles.logo} />
             <p className={styles.copyright}>{profile.toJSON().copyright}</p>
           </div>
         </footer>
-      )}
+      )} */}
     </div>
   )
 }

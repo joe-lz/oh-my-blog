@@ -1,13 +1,14 @@
 @import "~src/styles/variables.scss";
 
 .container {
-  padding: 0 30px;
+  padding: 0 50px;
   padding-top: 40px;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   width: 100%;
   max-width: 1700px;
+  min-height: 90vh;
   .notAuthed {
     display: flex;
     justify-content: center;

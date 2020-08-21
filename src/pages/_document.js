@@ -1,7 +1,6 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Head, Main, NextScript } from "next/document";
 
-import { GA_TRACKING_ID } from 'src/lib/gtag'
-
+import { GA_TRACKING_ID } from "src/lib/gtag";
 
 export default class MyDocument extends Document {
   render() {
@@ -23,7 +22,10 @@ export default class MyDocument extends Document {
           <meta httpEquiv="Cache-Control" content="no-siteapp" />
           <meta httpEquiv="Window-target" content="_top" />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
-          <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
           <script
             data-ad-client="ca-pub-6546234661958235"
             async
@@ -41,13 +43,16 @@ export default class MyDocument extends Document {
           `,
             }}
           />
-          <link rel="stylesheet" href="//at.alicdn.com/t/font_1979855_d79vuj2mmd7.css"></link>
+          <link
+            rel="stylesheet"
+            href="//at.alicdn.com/t/font_1979855_ljgqkqi75of.css"
+          ></link>
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }
