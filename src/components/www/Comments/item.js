@@ -4,10 +4,25 @@ import AV from "leancloud-storage";
 import dayjs from "dayjs";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { message } from "antd";
+import {
+  Tree,
+  Button,
+  notification,
+  Input,
+  Modal,
+  TreeSelect,
+  Menu,
+  Dropdown,
+  Spin,
+  message,
+} from "antd";
 
 import styles from "./index.module.scss";
-import { updateComment } from "src/service/comment";
+import {
+  createComment,
+  updateComment,
+  getCommentList,
+} from "src/service/comment";
 
 require("dayjs/locale/zh-cn");
 dayjs.locale("zh-cn");
@@ -30,20 +45,22 @@ function Components(props) {
   const author = props.item.attributes.user;
   return (
     <div className={styles.item}>
-      <div className={styles.item_top}>
-        <div
-          className={styles.avatar}
-          style={{ backgroundImage: `url(${author.avatar})` }}
-        ></div>
-        <p className={styles.nickname}>{author.nickname}</p>
-        <p className={styles.about}>
-          {author.position}
-          {author.co_name ? `@${author.co_name}` : ""}
-        </p>
-        <p className={styles.time}>
-          {dayjs(props.item.createdAt).format("YYYY/MM/DD HH:mm")}
-        </p>
-      </div>
+      <a href={`/www/user/${author.objectId}`} target="_blank">
+        <div className={styles.item_top}>
+          <div
+            className={styles.avatar}
+            style={{ backgroundImage: `url(${author.avatar})` }}
+          ></div>
+          <p className={styles.nickname}>{author.nickname}</p>
+          <p className={styles.about}>
+            {author.position}
+            {author.co_name ? `@${author.co_name}` : ""}
+          </p>
+          <p className={styles.time}>
+            {dayjs(props.item.createdAt).format("YYYY/MM/DD HH:mm")}
+          </p>
+        </div>
+      </a>
       <p className={styles.content}>{props.item.attributes.content}</p>
       <div className={styles.item_operation}>
         <div

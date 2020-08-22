@@ -18,7 +18,6 @@ import {
 import ReactCardFlip from "react-card-flip";
 
 import styles from "./index.module.scss";
-import leanerrors from "src/lib/leancloud_error_code.json";
 
 const layout = {
   labelCol: { span: 6 },
