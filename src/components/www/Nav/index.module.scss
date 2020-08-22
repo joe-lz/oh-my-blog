@@ -1,4 +1,4 @@
-@import '~src/styles/variables.scss';
+@import "~src/styles/variables.scss";
 
 .nav1 {
   height: 80px;
@@ -67,7 +67,7 @@
           }
         }
         &::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: 0;
           left: 0;
@@ -130,5 +130,25 @@
 
 @media (prefers-color-scheme: dark) {
   .container {
+  }
+}
+
+@media (max-width: 400px) {
+  .nav1 {
+    .nav {
+      &_logo {
+        display: none;
+      }
+      &_link {
+        display: flex;
+        justify-content: space-around;
+        &_item, &_item_active {
+          margin: 0;
+        }
+      }
+      .link_login {
+        display: none;
+      }
+    }
   }
 }
