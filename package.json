@@ -1,0 +1,48 @@
+{
+  "name": "leanblog",
+  "version": "0.1.0",
+  "scripts": {
+    "init:project": "yarn;yarn download-theme",
+    "download-theme": "node scripts/download-theme.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.2.1",
+    "codemirror": "^5.56.0",
+    "codemirror-github-light": "^0.4.2",
+    "dayjs": "^1.8.31",
+    "github-markdown-css": "^4.0.0",
+    "highlight.js": "^10.1.2",
+    "leancloud-storage": "^4.6.1",
+    "marked": "^1.1.1",
+    "next": "9.3.5",
+    "react": "16.13.1",
+    "react-card-flip": "^1.0.11",
+    "react-codemirror2": "^7.2.1",
+    "react-copy-to-clipboard": "^5.0.2",
+    "react-dom": "16.13.1",
+    "react-particles-js": "^3.3.0",
+    "react-scroll": "^1.8.0",
+    "remarkable": "^2.0.1",
+    "shortid": "^2.2.15",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "antd": "^4.5.1",
+    "autodll-webpack-plugin": "^0.4.2",
+    "dotenv": "^8.2.0",
+    "download-git-repo": "^3.0.2",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "rimraf": "^3.0.2",
+    "sass": "^1.26.10"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}
