@@ -14,7 +14,6 @@ import "codemirror-github-light/lib/codemirror-github-light-theme.css";
 import styles from "./app.module.scss";
 
 const { publicRuntimeConfig } = getConfig();
-console.error({ publicRuntimeConfig });
 AV.init({
   appId: publicRuntimeConfig.YOUR_LEANCLOUD_APPID || "test",
   appKey: publicRuntimeConfig.YOUR_LEANCLOUD_APPKEY || "test",
