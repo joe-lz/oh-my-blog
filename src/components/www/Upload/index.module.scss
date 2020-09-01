@@ -1,0 +1,52 @@
+@import "~src/styles/variables.scss";
+
+.uploader {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+}
+.assets {
+  &_body {
+    padding: 15px;
+    font-size: 0;
+  }
+  &_upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  &_imgitem {
+    margin-bottom: 15px;
+    margin-right: 15px;
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    width: 200px;
+    height: 150px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    font-size: 14px;
+    &:hover {
+      .assets_imgitem_content {
+        display: flex;
+        background-color: rgba(0,0,0,0.6);
+      }
+    }
+    &_content {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      button {
+        margin: 10px;
+      }
+    }
+  }
+}

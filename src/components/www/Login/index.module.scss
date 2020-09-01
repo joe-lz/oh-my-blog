@@ -1,0 +1,13 @@
+@import "~src/styles/variables.scss";
+
+.btn {
+  display: inline-block;
+}
+.login {
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  &_content {
+  }
+}

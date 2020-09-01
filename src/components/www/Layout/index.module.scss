@@ -1,0 +1,58 @@
+@import "~src/styles/variables.scss";
+
+.container {
+  // background-color: white;
+  width: 100vw;
+  overflow: hidden;
+  min-height: 100vh;
+  .body {
+    min-height: 80vh;
+  }
+  .footer {
+    background-color: white;
+    border-top: 1px solid $color-border;
+    &_content {
+      padding: 60px 0;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1200px;
+      .logo {
+        margin-bottom: 15px;
+        height: 30px;
+        // width: 100%;
+        // background-position: center;
+        // background-size: contain;
+        // background-repeat: no-repeat;
+        img {
+          height: 100%;
+        }
+      }
+      .item,
+      .copyright {
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        color: $color-disabled;
+      }
+    }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .container {
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    .footer {
+      &_content {
+        padding: 30px;
+        .copyright {
+          line-height: 15px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

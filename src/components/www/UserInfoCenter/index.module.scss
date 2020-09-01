@@ -1,0 +1,76 @@
+@import '~src/styles/variables.scss';
+
+.left {
+  width: 100%;
+  .btn_follow {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  .follows_num {
+    padding-bottom: 50px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: $color-disabled;
+    i {
+      margin-right: 5px;
+      position: relative;
+      top: 2px;
+      color: $color-disabled;
+      font-size: 20px;
+    }
+    .num {
+      margin-right: 2px;
+      font-weight: bold;
+      color: $color-font;
+    }
+  }
+  .avatar {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-color: $color-btnbg;
+  }
+  .item {
+    line-height: 35px;
+    height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+    i {
+      position: relative;
+      display: inline-block;
+      top: 3px;
+      width: 30px;
+      font-size: 20px;
+      // color: $color-font;
+      color: $color-disabled;
+    }
+    a {
+      color: $color-font;
+      &:hover {
+        color: $color-link;
+        text-decoration: underline;
+      }
+    }
+  }
+  .nickname {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .position {
+    margin-top: 5px;
+    font-size: 14px;
+    color: $color-disabled;
+  }
+  .desc {
+    margin-top: 15px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
