@@ -53,14 +53,7 @@ function Components(props) {
       <nav>
         {profile && (
           <Link href="/">
-            {/* <img
-            className={styles.logoimg}
-            src={profile && profile.attributes.logo ? profile.attributes.logo : 'https://qiniu.jingdian.club/FpFCrbbNmg-GmFfVLdsxmmbPZFHw'}
-          ></img> */}
-            <div
-              className={styles.logo}
-              style={{ backgroundImage: `url(${profile.attributes.logo})` }}
-            ></div>
+            <img src={profile.toJSON().logo} alt="" className={styles.logo} />
           </Link>
         )}
         <div className={styles.right}>
