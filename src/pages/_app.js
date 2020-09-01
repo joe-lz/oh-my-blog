@@ -1,6 +1,7 @@
 import Head from "next/head";
 import AV from "leancloud-storage";
 import getConfig from "next/config";
+import { useRouter } from 'next/router'
 
 import "antd/dist/antd.css";
 import "../styles/global.scss";
@@ -21,6 +22,9 @@ AV.init({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter()
+  console.log(router);
+
   return (
     <div>
       <Head>
@@ -32,7 +36,7 @@ function MyApp({ Component, pageProps }) {
         <p className={styles.title}>
           {`Powered By `}
           <a
-            href={`https://omb.todokit.xyz?from=${location.host}`}
+            href={`https://omb.todokit.xyz`}
             className="link"
             target="_blank"
           >
@@ -41,7 +45,7 @@ function MyApp({ Component, pageProps }) {
           </a>
           ・{`在线预览 `}
           <a
-            href={`https://omb.todokit.xyz?from=${location.host}`}
+            href={`https://omb.todokit.xyz`}
             className="link_active"
             target="_blank"
           >
