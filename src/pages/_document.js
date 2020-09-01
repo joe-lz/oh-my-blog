@@ -7,8 +7,8 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
-          <meta name="keywords" content="" />
-          <meta name="description" content="" />
+          <meta name="keywords" content="云开发,leancloud,nextjs,开源博客,前端,算法,node开发,javascript编程,css,react,编程" />
+          <meta name="description" content="云开发,leancloud,nextjs,开源博客,前端,算法,node开发,javascript编程,css,react,编程" />
           <meta name="renderer" content="webkit" />
           <meta name="author" content="jeodiong@hotmail.com" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
