@@ -8,6 +8,9 @@
   font-size: 12px;
   text-align: center;
   background-color: white;
+  font-weight: bold;
+  font-style: italic;
+
   .title {
     color: $color-disabled;
   }
@@ -19,8 +22,8 @@
     color: $color-disabled;
   }
   a {
-    color: $color-disabled;
-    // font-style: italic;
+    // color: $color-disabled;
+    color: $color-link;
     &:hover {
       color: $color-link;
       i {

@@ -32,13 +32,21 @@ function MyApp({ Component, pageProps }) {
         <p className={styles.title}>
           {`Powered By `}
           <a
-            href="https://github.com/joe-lz/oh-my-blog"
+            href={`https://omb.todokit.xyz?from=${location.host}`}
             className="link"
             target="_blank"
           >
-            <i className="iconfont icon-github"></i>「oh my blog」
+            {/* <i className="iconfont icon-github"></i> */}
+            「oh my blog」
           </a>
-          .
+          ・{`在线预览 `}
+          <a
+            href={`https://omb.todokit.xyz?from=${location.host}`}
+            className="link_active"
+            target="_blank"
+          >
+            Demo
+          </a>
         </p>
       </div>
     </div>
