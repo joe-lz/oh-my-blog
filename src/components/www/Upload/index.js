@@ -20,7 +20,6 @@ function Components(props) {
       // message.error(file.name + "图片大小超出1Mno限制，请修改后重新上传", 0.8);
       notification.error({
         message: `图片大小超出1M限制，请修改后重新上传`,
-        // description: leanerrors[error.code] ? leanerrors[error.code].msg : "",
       })
       return isLt1M
     }

@@ -1,9 +1,9 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import AV from 'leancloud-storage'
-import dayjs from 'dayjs'
-import { useRouter } from 'next/router'
-import React, { useState, useEffect } from 'react'
+import Head from "next/head";
+import Link from "next/link";
+import AV from "leancloud-storage";
+import dayjs from "dayjs";
+import { useRouter } from "next/router";
+import React, { useState, useEffect } from "react";
 import {
   Tree,
   Button,
@@ -14,88 +14,86 @@ import {
   Menu,
   Dropdown,
   Spin,
-  message
-} from 'antd'
+  message,
+} from "antd";
 
-import styles from './index.module.scss'
-import Item from 'src/components/www/Comments/item'
-import { createComment, getCommentList } from 'src/service/comment'
-import { updatePost } from 'src/service/post'
+import styles from "./index.module.scss";
+import Item from "src/components/www/Comments/item";
+import { createComment, getCommentList } from "src/service/comment";
+import { updatePost } from "src/service/post";
 
 // const { TextArea } = Input
-require('dayjs/locale/zh-cn')
-dayjs.locale('zh-cn')
-const relativeTime = require('dayjs/plugin/relativeTime')
-dayjs.extend(relativeTime)
+require("dayjs/locale/zh-cn");
+dayjs.locale("zh-cn");
+const relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
 
-function Components (props) {
-  const [content, setcontent] = useState('')
-  const [disabled, setdisabled] = useState(true)
-  const [list, setlist] = useState([])
+function Components(props) {
+  const [content, setcontent] = useState("");
+  const [disabled, setdisabled] = useState(true);
+  const [list, setlist] = useState([]);
 
   const handleSubmit = async () => {
     if (!AV.User.current()) {
-      message.error('请先登录')
-      return
+      message.error("请先登录");
+      return;
     }
-    if (!content) {
-      message.error('请输入评论')
-      return
+    if (content) {
+      await createComment(
+        Object.assign(
+          {
+            type: props.type,
+            user: props.userinfo,
+            content,
+          },
+          props.type === "article"
+            ? {
+                aid: props.id,
+              }
+            : {
+                pid: props.id,
+              }
+        )
+      );
+      getlist();
+      setcontent("");
+      if (props.type === "post") {
+        updatePost({
+          postItem: props.id,
+          params: {
+            comments: 1,
+          },
+        });
+      }
+      if (props.type === "article") {
+      }
     }
-    await createComment(
-      Object.assign(
-        {
-          type: props.type,
-          user: props.userinfo,
-          content
-        },
-        props.type === 'article'
-          ? {
-            aid: props.id
-          }
-          : {
-            pid: props.id
-          }
-      )
-    )
-    getlist()
-    setcontent('')
-    if (props.type === 'post') {
-      updatePost({
-        postItem: props.id,
-        params: {
-          comments: 1
-        }
-      })
-    }
-    if (props.type === 'article') {
-    }
-  }
+  };
 
   const getlist = async () => {
     const res = await getCommentList(
       Object.assign(
         {
-          type: props.type
+          type: props.type,
         },
-        props.type === 'article'
+        props.type === "article"
           ? {
-            aid: props.id
-          }
+              aid: props.id,
+            }
           : {
-            pid: props.id
-          }
+              pid: props.id,
+            }
       )
-    )
-    setlist(res)
-  }
+    );
+    setlist(res);
+  };
 
   useEffect(() => {
-    getlist()
-  }, [])
+    getlist();
+  }, []);
   useEffect(() => {
-    setdisabled(false)
-  }, [content])
+    setdisabled(false);
+  }, [content]);
 
   return (
     <div className={styles.comment}>
@@ -106,7 +104,7 @@ function Components (props) {
           placeholder="输入评论..."
           maxLength={140}
           onChange={(e) => {
-            setcontent(e.target.value)
+            setcontent(e.target.value);
           }}
         />
         <Button
@@ -114,7 +112,7 @@ function Components (props) {
           className={styles.submit}
           disabled={disabled}
           onClick={() => {
-            handleSubmit()
+            handleSubmit();
           }}
         >
           发布
@@ -122,11 +120,11 @@ function Components (props) {
       </div>
       <div className={styles.comment_list}>
         {list.map((obj) => {
-          return <Item key={obj.id} item={obj} userinfo={props.userinfo} />
+          return <Item key={obj.id} item={obj} userinfo={props.userinfo} />;
         })}
       </div>
     </div>
-  )
+  );
 }
 
-export default Components
+export default Components;

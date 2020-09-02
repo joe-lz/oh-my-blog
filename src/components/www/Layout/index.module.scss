@@ -1,9 +1,8 @@
-@import "~src/styles/variables.scss";
+@import '~src/styles/variables.scss';
 
 .container {
   // background-color: white;
   width: 100vw;
-  overflow: hidden;
   min-height: 100vh;
   .body {
     min-height: 80vh;
@@ -27,8 +26,7 @@
           height: 100%;
         }
       }
-      .item,
-      .copyright {
+      .item, .copyright {
         font-size: 14px;
         height: 30px;
         line-height: 30px;
@@ -40,19 +38,5 @@
 
 @media (prefers-color-scheme: dark) {
   .container {
-  }
-}
-
-@media (max-width: 400px) {
-  .container {
-    .footer {
-      &_content {
-        padding: 30px;
-        .copyright {
-          line-height: 15px;
-          font-size: 12px;
-        }
-      }
-    }
   }
 }
