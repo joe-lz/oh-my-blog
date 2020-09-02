@@ -33,8 +33,7 @@ function Components(props) {
   return (
     <>
       {props.data && (
-        <a
-          target="_blank"
+        <Link
           href={`/www/adetail/${props.data.objectId}?cate1=${props.data.category_1_key}&cate2=${props.data.category_2_key}`}
         >
           <div className={styles.articleItem} style={props.style}>
@@ -73,7 +72,7 @@ function Components(props) {
               </div>
             </div>
           </div>
-        </a>
+        </Link>
       )}
     </>
   );

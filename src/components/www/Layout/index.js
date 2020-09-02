@@ -4,7 +4,7 @@ import AV from "leancloud-storage";
 import dayjs from "dayjs";
 import React, { useState, useEffect } from "react";
 import { getMenusList } from "src/service/menu";
-import { getProfileList } from "src/service/profile";
+import { getProfileList, updateProfile } from "src/service/profile";
 import { getMyUserInfo, createUserInfo } from "src/service/user";
 
 import styles from "./index.module.scss";
@@ -33,11 +33,20 @@ function Components(props) {
     const local_data = sessionStorage.getItem(keyname);
     if (local_data) {
       setFunc(JSON.parse(local_data));
+      if (keyname === "CMS_Profile") {
+        updateViews({ profile_id: JSON.parse(local_data).objectId });
+      }
     } else {
       const res = await func();
       if (res) {
         setFunc(JSON.parse(JSON.stringify(res)));
         sessionStorage.setItem(keyname, JSON.stringify(res));
+        if (keyname === "CMS_Profile") {
+          updateViews({ profile_id: JSON.parse(JSON.stringify(res)).objectId });
+          updateViews_UV({
+            profile_id: JSON.parse(JSON.stringify(res)).objectId,
+          });
+        }
       } else {
         // 如果是CMS_UserInfo 则创建userinfo
         if (keyname === "CMS_UserInfo" && AV.User.current()) {
@@ -46,6 +55,25 @@ function Components(props) {
         }
       }
     }
+  };
+
+  // 更新views
+  const updateViews = function ({ profile_id }) {
+    updateProfile({
+      profileItem: AV.Object.createWithoutData("CMS_Profile", profile_id),
+      params: {
+        views: 1,
+      },
+    });
+  };
+  const updateViews_UV = function ({ profile_id }) {
+    // 更新views
+    updateProfile({
+      profileItem: AV.Object.createWithoutData("CMS_Profile", profile_id),
+      params: {
+        views_uv: 1,
+      },
+    });
   };
 
   useEffect(() => {
@@ -95,6 +123,11 @@ function Components(props) {
             {profile.copyright && (
               <div className={styles.copyright}>{profile.copyright}</div>
             )}
+            <div className={styles.copyright}>
+              {`当前站点总访问量 ${profile.views || "..."} 次，总访客数 ${
+                profile.views_uv || "..."
+              } 人`}
+            </div>
           </div>
         </footer>
       )}
