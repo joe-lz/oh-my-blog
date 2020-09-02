@@ -52,7 +52,7 @@ function Components(props) {
     <header className={styles.header}>
       <nav>
         {profile && (
-          <Link href="/">
+          <Link href="/admin/home">
             <img src={profile.toJSON().logo} alt="" className={styles.logo} />
           </Link>
         )}

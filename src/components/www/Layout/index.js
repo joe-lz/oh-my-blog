@@ -10,6 +10,11 @@ import { getMyUserInfo, createUserInfo } from "src/service/user";
 import styles from "./index.module.scss";
 import Nav from "../Nav";
 
+require("dayjs/locale/zh-cn");
+dayjs.locale("zh-cn");
+const relativeTime = require("dayjs/plugin/relativeTime");
+dayjs.extend(relativeTime);
+
 Components.defaultProps = {
   onChange: () => {},
 };
@@ -124,7 +129,7 @@ function Components(props) {
               <div className={styles.copyright}>{profile.copyright}</div>
             )}
             <div className={styles.copyright}>
-              {`当前站点总访问量 ${profile.views || "..."} 次，总访客数 ${
+              {`当前站点创建于${dayjs(profile.createdAt).fromNow()}，总访次数 ${profile.views || "..."} 次，总访客数 ${
                 profile.views_uv || "..."
               } 人`}
             </div>
